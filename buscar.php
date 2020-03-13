@@ -1,6 +1,6 @@
 <?php
     if (!isset($_POST['busqueda'])) {
-        header('Location: index.php');
+        header('Location: ./../index.php');
     }
 ?>
 
@@ -13,21 +13,21 @@
 
         <?php
             $entradas = getEntradas($connect, null, null, $_POST['busqueda']);
-        if (!empty($entradas) && mysqli_num_rows($entradas) >= 1):
-            while ($entrada = mysqli_fetch_assoc($entradas)):
-                ?>
-                <article class="input">
-                    <a href="entrada.php?id=<?= $entrada['id'] ?>">
-                        <h2><?= $entrada['titulo'] ?></h2>
-                        <span class="fecha"><?= $entrada['categoria'] . ' | ' . $entrada['fecha'] ?></span>
-                        <p> <?= substr($entrada['descripcion'], 0, 150) . "..." ?> </p>
-                    </a>
-                </article>
-            <?php
-            endwhile;
-        else:
-            ?>
-            <div class="alert">No hay entradas en esta categoria</div>
+            if (!empty($entradas) && mysqli_num_rows($entradas) >= 1):
+                while ($entrada = mysqli_fetch_assoc($entradas)):
+        ?>
+                    <article class="input">
+                        <a href="entrada.php?id=<?= $entrada['id'] ?>">
+                            <h2><?= $entrada['titulo'] ?></h2>
+                            <span class="fecha"><?= $entrada['categoria'] . ' | ' . $entrada['fecha'] ?></span>
+                            <p> <?= substr($entrada['descripcion'], 0, 150) . "..." ?> </p>
+                        </a>
+                    </article>
+        <?php
+                endwhile;
+            else:
+        ?>
+                <div class="alert">No hay entradas en esta categoria</div>
         <?php endif; ?>
 
     </div>

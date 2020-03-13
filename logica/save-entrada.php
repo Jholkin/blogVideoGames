@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST)) {
-    require_once 'includes/conection.php';
+    require_once '../includes/conection.php';
 
     $nombre = isset($_POST['name']) ? mysqli_real_escape_string($connect, $_POST['name']) : false;
     $descripcion = isset($_POST['description']) ? mysqli_real_escape_string($connect, $_POST['description']) : false;
@@ -13,7 +13,7 @@ if (isset($_POST)) {
 
     // validamos los datos antes de guardarlos en la base de datos
     // validamos campo name
-    if (empty($nombre) || is_numeric($nombre) || preg_match("/[0-9]/",$nombre)) {
+    if (empty($nombre)) {
         $errors['name'] = "nombre invalido";
     }
 
@@ -35,9 +35,9 @@ if (isset($_POST)) {
 
         $guardar = mysqli_query($connect, $sql);
 
-        header('Location: index.php');
+        header('Location: ./../index.php');
     }else {
         $_SESSION['errores_entrada'] = $errors;
-        header('Location: crear-entrada.php');
+        header('Location: ./../crear-entrada.php');
     }
 }

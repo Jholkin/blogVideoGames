@@ -2,7 +2,7 @@
 
 if (isset($_POST['submit'])) {
     // Conexión a la base de datos
-    require_once 'includes/conection.php';
+    require_once '../includes/conection.php';
 
     // Recogemos los valores del formulario de registro
     $name = isset($_POST['name']) ? mysqli_real_escape_string($connect, $_POST['name']) : false;
@@ -58,4 +58,4 @@ if (isset($_POST['submit'])) {
     }
 }
 
-header('Location: mis-datos.php');
+header('Location: ./../mis-datos.php');

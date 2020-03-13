@@ -9,7 +9,7 @@ require_once 'includes/sidebar.php';
     <h1>Crear entradas</h1>
     <p>Añade nuevas entradas para que los usuarios puedan verla y sentirse más atraídos a su blog.</p>
     <br>
-    <form action="save-entrada.php" method="post">
+    <form action="logica/save-entrada.php" method="post">
         <label for="name">Nombre de la entrada</label>
         <input name="name" id="name">
         <?php echo isset($_SESSION['errores_entrada']) ? mostrarError($_SESSION['errores_entrada'], 'name') : ''; ?>
@@ -20,15 +20,18 @@ require_once 'includes/sidebar.php';
 
         <label for="category">Categoria</label>
         <select name="category" id="category">
-            <?php $categorias = getCategories($connect);
+            <?php 
+                $categorias = getCategories($connect);
                 if (!empty($categorias)):
                     while($categoria = mysqli_fetch_assoc($categorias)):
             ?>
-                <option value="<?= $categoria['id']?>">
-                    <?= $categoria['nombre'] ?>
-                </option>
-            <?endwhile;
-            endif;?>
+                        <option value="<?= $categoria['id']; ?>">
+                            <?= $categoria['nombre']; ?>
+                        </option>
+            <?php
+                    endwhile;
+                endif;
+            ?>
         </select>
         <?php echo isset($_SESSION['errores_entrada']) ? mostrarError($_SESSION['errores_entrada'], 'category') : ''; ?>
 
@@ -37,4 +40,4 @@ require_once 'includes/sidebar.php';
     <?php borrarError(); ?>
 </div>
 
-<?= require_once 'includes/footer.php' ?>
+<?php require_once 'includes/footer.php'; ?>

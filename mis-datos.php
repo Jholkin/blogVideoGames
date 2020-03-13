@@ -17,7 +17,7 @@ require_once 'includes/sidebar.php';
             <?= $_SESSION['errors']['generic'];?>
         </div>
     <?php endif; ?>
-    <form action="update-user.php" method="post">
+    <form action="logica/update-user.php" method="post">
         <label for="name">Nombre</label>
         <input type="text" name="name" value="<?= $_SESSION['login']['nombre']; ?>">
         <?php echo isset($_SESSION['errors']) ? mostrarError($_SESSION['errors'], 'name') : ''; ?>

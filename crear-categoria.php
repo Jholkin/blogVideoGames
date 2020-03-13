@@ -10,7 +10,7 @@ require_once 'includes/sidebar.php';
 
     <p>Añade nuevas categorías para que los usuarios puedan verla y sentirse más atraídos a su blog.</p>
     <br>
-    <form action="save-category.php" method="post">
+    <form action="logica/save-category.php" method="post">
         <label for="name">Nombre de la categoria</label>
         <input name="name" id="name">
 

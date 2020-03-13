@@ -2,7 +2,7 @@
 
 if (isset($_POST['submit'])) {
     // Conexión a la base de datos
-    require_once 'includes/conection.php';
+    require_once '../includes/conection.php';
 
     // Iniciamos la sesión
     if (!isset($_SESSION)) {
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 
         // insertamos datos  en la tabla usuarios
         $consulta = "INSERT INTO usuarios VALUES (null,'$name','$lastname','$email','$password_cifrada', CURRENT_DATE)";
-//        var_dump($consulta);
+
         $insert = mysqli_query($connect, $consulta);
 
         if ($insert) {
@@ -58,4 +58,4 @@ if (isset($_POST['submit'])) {
     }
 }
 
-header('Location: index.php');
+header('Location: ./../index.php');

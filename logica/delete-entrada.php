@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/conection.php';
+include_once '../includes/conection.php';
 
 if ($_SESSION['login'] && $_GET['id']) {
     $entrada_id = $_GET['id'];
